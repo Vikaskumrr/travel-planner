@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TripForm from './components/trip-form/trip-form';
+import TripList from './components/trip-list/trip-list';
 
-function App() {
+interface Trip {
+  id: number;
+  destination: string;
+  attractions: string[];
+  foods: string[];
+  shopping: string[];
+  hotel: string;
+}
+
+const App: React.FC = () => {
+  const [trips, setTrips] = useState<Trip[]>([]);
+
+  const addTrip = (trip: Trip) => {
+    setTrips([...trips, trip]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Travel Planner</h1>
+      <TripForm onAddTrip={addTrip} />
+      <TripList trips={trips} />
     </div>
   );
 }

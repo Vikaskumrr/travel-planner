@@ -1,9 +1,12 @@
+// src/App.test.tsx
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+  it('renders the main application components', () => {
+    const { getByText } = render(<App />);
+    expect(getByText('Travel Planner')).toBeInTheDocument();
+    expect(getByText('Add Trip')).toBeInTheDocument(); // Assuming 'Add Trip' is a button in TripForm
+  });
 });
