@@ -1,0 +1,15 @@
+body, html {
+  height: 100%; // Ensure the full height is available
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Use Viewport Height to ensure it takes full browser window height
+  text-align: center;
+  padding: 20px; // This adds some space around the container to prevent touching the edges
+}
