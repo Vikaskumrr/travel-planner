@@ -1,5 +1,6 @@
 // src/components/TripList.tsx
 import React from 'react';
+import './trip-list.scss';
 import TripCard from '../trip-card/trip-card';
 
 interface Trip {
@@ -17,10 +18,12 @@ interface Props {
 
 const TripList: React.FC<Props> = ({ trips }) => {
   return (
-    <div>
-      {trips.map(trip => (
-        <TripCard key={trip.id} trip={trip} />
-      ))}
+    <div className="trip-list">
+    {trips.map(trip => (
+        <div className="trip-item" key={trip.id}>
+            <TripCard key={trip.id} trip={trip} />
+        </div>
+    ))}
     </div>
   );
 }

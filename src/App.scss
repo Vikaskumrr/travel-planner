@@ -7,9 +7,41 @@ body, html {
 
 .app-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh; // Use Viewport Height to ensure it takes full browser window height
   text-align: center;
   padding: 20px; // This adds some space around the container to prevent touching the edges
+}
+
+.animated-title span {
+  display: inline-block;
+  animation-name: color-change;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;  // Make the animation loop forever
+  animation-timing-function: ease-in-out;  // Smooths the start and end of the animation
+}
+
+@keyframes color-change {
+  0%, 100% {
+    color: rgb(32, 31, 31);  // Starts and ends in black
+  }
+  20% {
+    color: #7b8f9c;  // Blue
+  }
+  40% {
+    color: #e74c3c;  // Red
+  }
+  60% {
+    color: #f1c40f;  // Yellow
+  }
+  80% {
+    color: #306b48;  // Green
+  }
+}
+
+h1 {
+  margin-bottom: 20px;
 }
