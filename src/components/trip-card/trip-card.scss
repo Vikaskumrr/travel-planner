@@ -14,6 +14,20 @@ $border-color: #ccc;
 .trip-card {
     @include card-style;
 
+    button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        &:first-of-type {
+          margin-right: 10px;
+        }
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
     h3 {
         color: $primary-color;
         font-size: 20px;

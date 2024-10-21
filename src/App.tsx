@@ -4,6 +4,7 @@ import LoginForm from './components/login/login-form';
 import TripForm from './components/trip-form/trip-form';
 import TripList from './components/trip-list/trip-list';
 import Settings from './components/settings/settings';
+import Modal from './components/modal/modal';  // Import the Modal component
 
 interface Trip {
   id: number;
@@ -18,6 +19,7 @@ const App: React.FC = () => {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [theme, setTheme] = useState('day');
+  const [editingTrip, setEditingTrip] = useState<Trip | undefined>(undefined);
 
   useEffect(() => {
     // Check login state from localStorage
@@ -30,6 +32,22 @@ const App: React.FC = () => {
 
   const addTrip = (trip: Trip) => {
     setTrips([...trips, trip]);
+  };
+
+  const deleteTrip = (id: number) => {
+    setTrips(trips.filter(trip => trip.id !== id));
+  };
+
+
+  // Other state and functions remain unchanged
+
+  const editTrip = (trip: Trip) => {
+    setEditingTrip(trip);  // Set the trip to be edited
+  };
+
+  const handleUpdateTrip = (updatedTrip: Trip) => {
+    setTrips(trips.map(trip => trip.id === updatedTrip.id ? updatedTrip : trip));
+    setEditingTrip(undefined);  // Close modal after updating
   };
 
   const handleLoginSuccess = () => {
@@ -63,8 +81,11 @@ const App: React.FC = () => {
         <>
           <h1 className="animated-title">{renderAnimatedTitle("Travel Planner")}</h1>
           <TripForm onAddTrip={addTrip} />
-          <TripList trips={trips} />
+          <TripList trips={trips} onDelete={deleteTrip} onEdit={editTrip} />
           <Settings onLogout={handleLogout} toggleTheme={toggleTheme} />
+          <Modal isOpen={!!editingTrip} onClose={() => setEditingTrip(undefined)}>
+            <TripForm trip={editingTrip} onAddTrip={handleUpdateTrip} />  {/* Reuse TripForm for editing */}
+          </Modal>
         </>
       )}
     </div>
