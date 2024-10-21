@@ -12,9 +12,11 @@ interface Trip {
 
 interface Props {
   trip: Trip;
+  onDelete: (id: number) => void;
+  onEdit: (trip: Trip) => void;
 }
 
-const TripCard: React.FC<Props> = ({ trip }) => {
+const TripCard: React.FC<Props> = ({ trip, onDelete, onEdit }) => {
   return (
     <div className='trip-card'>
       <h3>{trip.destination}</h3>
@@ -22,6 +24,8 @@ const TripCard: React.FC<Props> = ({ trip }) => {
       <p>Foods: {trip.foods.join(', ')}</p>
       <p>Shopping: {trip.shopping.join(', ')}</p>
       <p>Hotel: {trip.hotel}</p>
+      <button onClick={() => onEdit(trip)}>Edit</button>
+      <button onClick={() => onDelete(trip.id)}>Delete</button>
     </div>
   );
 }

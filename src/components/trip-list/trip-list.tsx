@@ -14,14 +14,16 @@ interface Trip {
 
 interface Props {
   trips: Trip[];
+  onDelete: (id: number) => void;
+  onEdit: (trip: Trip) => void;
 }
 
-const TripList: React.FC<Props> = ({ trips }) => {
+const TripList: React.FC<Props> = ({ trips, onDelete, onEdit }) => {
   return (
     <div className="trip-list">
     {trips.map(trip => (
         <div className="trip-item" key={trip.id}>
-            <TripCard key={trip.id} trip={trip} />
+            <TripCard key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit} />
         </div>
     ))}
     </div>
