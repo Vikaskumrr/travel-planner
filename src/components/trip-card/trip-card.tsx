@@ -1,4 +1,5 @@
 import React from 'react';
+import './trip-card.scss';
 
 interface Trip {
   id: number;
@@ -15,7 +16,7 @@ interface Props {
 
 const TripCard: React.FC<Props> = ({ trip }) => {
   return (
-    <div>
+    <div className='trip-card'>
       <h3>{trip.destination}</h3>
       <p>Attractions: {trip.attractions.join(', ')}</p>
       <p>Foods: {trip.foods.join(', ')}</p>

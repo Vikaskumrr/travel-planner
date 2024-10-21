@@ -25,15 +25,19 @@ const App: React.FC = () => {
     setIsLoggedIn(true);
   };
 
+  const renderAnimatedTitle = (title: string) => {
+    return title.split('').map((char, index) => (
+      <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>{char}</span>
+    ));
+  };
+
   return (
     <div className='app-container'>
       {!isLoggedIn ? (
         <LoginForm onLoginSuccess={handleLoginSuccess} />
       ) : (
         <>
-        <div className="header">
-        <h1>Travel Planner</h1>
-        </div>
+          <h1 className="animated-title">{renderAnimatedTitle("Travel Planner")}</h1>
           <TripForm onAddTrip={addTrip} />
           <TripList trips={trips} />
         </>

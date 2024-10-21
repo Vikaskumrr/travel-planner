@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import TripCard from '../trip-card/trip-card';
+import TripCard from './trip-card';
 
 describe('TripCard', () => {
   it('displays trip details', () => {
@@ -18,6 +18,6 @@ describe('TripCard', () => {
     expect(getByText(/eiffel tower/i)).toBeInTheDocument();
     expect(getByText(/croissant/i)).toBeInTheDocument();
     expect(getByText(/fashion boutiques/i)).toBeInTheDocument();
-    expect(getByText(/hotel paris/i)).toBeInTheDocument();
+    expect(getByText(/Hotel Paris/i)).toBeInTheDocument();
   });
 });

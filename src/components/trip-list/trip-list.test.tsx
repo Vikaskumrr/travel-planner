@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import TripList from '../trip-list/trip-list';
+import TripList from './trip-list';
 import TripCard from '../trip-card/trip-card';
 
-jest.mock('../TripCard', () => {
+jest.mock('../trip-card/trip-card', () => {
   return jest.fn(() => <div>TripCard</div>);
 });
 

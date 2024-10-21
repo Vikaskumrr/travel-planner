@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './trip-form.scss';
 
 interface Trip {
   id: number;
@@ -38,14 +39,16 @@ const TripForm: React.FC<Props> = ({ onAddTrip }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={destination} onChange={e => setDestination(e.target.value)} placeholder="Destination" />
-      <input type="text" value={attractions} onChange={e => setAttractions(e.target.value)} placeholder="Attractions" />
-      <input type="text" value={foods} onChange={e => setFoods(e.target.value)} placeholder="Foods" />
-      <input type="text" value={shopping} onChange={e => setShopping(e.target.value)} placeholder="Shopping" />
-      <input type="text" value={hotel} onChange={e => setHotel(e.target.value)} placeholder="Hotel" />
-      <button type="submit">Add Trip</button>
-    </form>
+    <div className='trip-form'>
+        <form onSubmit={handleSubmit}>
+        <input type="text" value={destination} onChange={e => setDestination(e.target.value)} placeholder="Destination" />
+        <input type="text" value={attractions} onChange={e => setAttractions(e.target.value)} placeholder="Attractions" />
+        <input type="text" value={foods} onChange={e => setFoods(e.target.value)} placeholder="Foods" />
+        <input type="text" value={shopping} onChange={e => setShopping(e.target.value)} placeholder="Shopping" />
+        <input type="text" value={hotel} onChange={e => setHotel(e.target.value)} placeholder="Hotel" />
+        <button type="submit">Add Trip</button>
+        </form>
+    </div>
   );
 }
 

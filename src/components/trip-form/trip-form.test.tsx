@@ -1,7 +1,7 @@
 // src/components/__tests__/TripForm.test.tsx
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import TripForm from '../trip-form/trip-form';
+import TripForm from './trip-form';
 
 describe('TripForm', () => {
   it('allows entering data and submitting a form', () => {
